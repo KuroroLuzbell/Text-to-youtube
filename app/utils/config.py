@@ -84,7 +84,6 @@ def guardar_modelos(modelos: dict):
     Args:
         modelos: Diccionario con los modelos a guardar
     """
-    global MODELOS
     config_path = os.path.join(BASE_DIR, "config_modelos.json")
 
     try:

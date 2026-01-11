@@ -35,6 +35,9 @@ jobs:
           pip install flake8
           flake8 app/ --count --select=E9,F63,F7,F82 --show-source --statistics
 
+      - name: List installed packages
+        run: pip list
+
       - name: Run tests
         run: |
           pip install pytest

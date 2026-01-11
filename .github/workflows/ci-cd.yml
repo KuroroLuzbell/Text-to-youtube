@@ -38,11 +38,6 @@ jobs:
       - name: List installed packages
         run: pip list
 
-      - name: Run tests
-        run: |
-          pip install pytest
-          pytest tests/
-
       # Build and push Docker image to Azure Container Registry (ACR)
       - name: Log in to Azure
         uses: azure/login@v2

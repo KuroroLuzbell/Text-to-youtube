@@ -1,2 +1,4 @@
+# Necesario para starlette.testclient y pruebas FastAPI
+httpx
 fastapi
 uvicorn

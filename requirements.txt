@@ -1,3 +1,4 @@
+google-generativeai
 python-dotenv
 # Necesario para starlette.testclient y pruebas FastAPI
 httpx

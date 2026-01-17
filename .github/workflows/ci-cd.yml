@@ -36,7 +36,6 @@ jobs:
       - name: List installed packages
         run: pip list
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/text-to-youtube:${{ github.sha }} .
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/text-to-youtube:${{ github.sha }}
+          docker build -t text-to-youtube:${{ github.sha }} .

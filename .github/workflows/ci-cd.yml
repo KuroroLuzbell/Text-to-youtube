@@ -14,8 +14,6 @@ jobs:
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     runs-on: ubuntu-latest
-    container:
-      image: python:3.10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

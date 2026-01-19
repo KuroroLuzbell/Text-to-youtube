@@ -5,18 +5,18 @@ jobs:
   build-feature:
     runs-on: ubuntu-latest
     outputs:
-      changed_files: ${{ steps.changed-files.outputs.files }}
+      changed_files_json: ${{ steps.changed-files.outputs.files }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for all tags and branches 2
+          fetch-depth: 0 # Fetch all history for all tags and branches
 
       - name: Get changed Python files
         id: changed-files
         run: |
-          # Compare with the 'develop' branch, prepend the absolute path, and filter for relevant files.
-          FILES=$(git diff --name-only origin/develop...${{ github.sha }} -- '*.py' '*.yml' '*.json' '*.md' | sed "s,^,${GITHUB_WORKSPACE}/current-repo/," | tr '\n' ' ')
+          # Compare with 'develop', get a JSON array of absolute file paths
+          FILES=$(git diff --name-only origin/develop...${{ github.sha }} -- '*.py' '*.yml' '*.json' '*.md' | sed "s,^,${GITHUB_WORKSPACE}/current-repo/," | jq -R . | jq -s .)
           echo "files=$FILES" >> $GITHUB_OUTPUT
         env:
           GITHUB_WORKSPACE: ${{ github.workspace }}
@@ -40,11 +40,15 @@ jobs:
         run: pip list
 
   code-review:
-    if: ${{ needs.build-feature.outputs.changed_files != '' }} # Only run if there are changed python files
+    if: ${{ needs.build-feature.outputs.changed_files_json != '[]' }} # Only run if there are changed files
     needs: build-feature
+    strategy:
+      matrix:
+        file: ${{ fromJson(needs.build-feature.outputs.changed_files_json) }}
+      fail-fast: false # Allow all jobs to complete even if one fails
     uses: kuroroluzbell/centralizado/.github/workflows/code-review-gemini.yml@main
     with:
-      files_to_analyze: ${{ needs.build-feature.outputs.changed_files }}
+      files_to_analyze: ${{ matrix.file }} # Pass one file at a time
       fail_level: "alta"
     secrets:
       LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}

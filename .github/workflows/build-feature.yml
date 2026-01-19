@@ -46,7 +46,7 @@ jobs:
       matrix:
         file: ${{ fromJson(needs.build-feature.outputs.changed_files_json) }}
       fail-fast: false # Allow all jobs to complete even if one fails
-    uses: .github/workflows/code-review-gemini.yml@main
+    uses: ./.github/workflows/code-review-gemini.yml@main
     with:
       files_to_analyze: ${{ matrix.file }} # Pass one file at a time
       fail_level: "alta"

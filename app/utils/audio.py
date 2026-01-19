@@ -11,7 +11,7 @@ ESTILOS_NARRACION = {
     "1": {
         "nombre": "Terror/Horror",
         "emoji": "👻",
-        "descripcion": "Voz tétrica, susurros, pausas dramáticas",
+        "descripcion": "Voz tétrica, susurros, pausas dramáticas ",
         "instrucciones": "[Habla con voz grave y tétrica, haciendo pausas dramáticas. Usa un tono misterioso y escalofriante, como si contaras una historia de terror alrededor de una fogata. Susurra en los momentos más intensos.]",
         "voz_recomendada": "Charon",
     },

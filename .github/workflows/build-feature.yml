@@ -1,14 +1,23 @@
 name: Build Feature
 on:
   push:
-    branches:
-      - "feature/**"
 jobs:
   build-feature:
     runs-on: ubuntu-latest
+    outputs:
+      changed_files: ${{ steps.changed-files.outputs.files }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for all tags and branches
+
+      - name: Get changed Python files
+        id: changed-files
+        run: |
+          # Compare with the 'develop' branch to find changed files, filter for .py files
+          FILES=$(git diff --name-only origin/develop...${{ github.sha }} -- '*.py' '*.yml' '*.json' '*.md' | tr '\n' ' ')
+          echo "files=$FILES" >> $GITHUB_OUTPUT
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,3 +36,14 @@ jobs:
 
       - name: List installed packages
         run: pip list
+
+  code-review:
+    if: ${{ needs.build-feature.outputs.changed_files != '' }} # Only run if there are changed python files
+    needs: build-feature
+    uses: KuroroLuzbell/.github/workflows/llm-code-review.yml@main
+    with:
+      files_to_analyze: ${{ needs.build-feature.outputs.changed_files }}
+      fail_level: "alta"
+    secrets:
+      LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}

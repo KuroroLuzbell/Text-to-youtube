@@ -50,6 +50,6 @@ jobs:
 
   lint-specific-files:
     needs: build-feature
-    uses: kuroroluzbell/tranvcentralizadoersal/.github/workflows/lint-code.yml@main
+    uses: kuroroluzbell/centralizado/.github/workflows/lint-code.yml@main
     with:
       files_to_lint: ${{ needs.build-feature.outputs.changed_files }}

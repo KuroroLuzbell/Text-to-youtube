@@ -4,8 +4,6 @@ on:
 
 jobs:
   test-call:
-    runs-on: ubuntu-latest
-    name: Test Calling Reusable Workflow
     uses: KuroroLuzbell/.github/workflows/code-review-gemini.yml@main
     with:
       files_to_analyze: 'README.md' # Usamos un solo archivo para la prueba

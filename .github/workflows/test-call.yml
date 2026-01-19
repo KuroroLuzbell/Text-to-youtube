@@ -4,7 +4,7 @@ on:
 
 jobs:
   test-call:
-    uses: KuroroLuzbell/.github/workflows/code-review-gemini.yml@main
+    uses: KuroroLuzbell/centralizado/workflows/code-review-gemini.yml@main
     with:
       files_to_analyze: 'README.md' # Usamos un solo archivo para la prueba
     secrets:

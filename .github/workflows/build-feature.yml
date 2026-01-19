@@ -40,7 +40,7 @@ jobs:
   code-review:
     if: ${{ needs.build-feature.outputs.changed_files != '' }} # Only run if there are changed python files
     needs: build-feature
-    uses: KuroroLuzbell/.github/workflows/code-review-gemini.yml@main
+    uses: KuroroLuzbell/centralizado/workflows/code-review-gemini.yml@main
     with:
       files_to_analyze: ${{ needs.build-feature.outputs.changed_files }}
       fail_level: "alta"

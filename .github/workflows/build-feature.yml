@@ -15,7 +15,7 @@ jobs:
       - name: Get changed Python files
         id: changed-files
         run: |
-          # Compare with the 'develop' branch to find changed files, filter for .py files
+          # Compare wit the 'develop' branch to find changed files, filter for .py files
           FILES=$(git diff --name-only origin/develop...${{ github.sha }} -- '*.py' '*.yml' '*.json' '*.md' | tr '\n' ' ')
           echo "files=$FILES" >> $GITHUB_OUTPUT
 

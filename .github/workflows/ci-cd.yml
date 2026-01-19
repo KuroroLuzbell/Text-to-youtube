@@ -38,11 +38,12 @@ jobs:
     permissions:
       packages: write # Grant write permissions for GitHub Packages
       contents: read # Grant read permission for repository contents
-    uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main # Asegúrate de usar la rama correcta (ej. main)
+    uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main
     with:
-      dockerfile_path: './Dockerfile' # Ruta a tu Dockerfile en este repositorio
-      image_name: 'text-to-youtube' # El nombre que quieras para la imagen
-      tags: 'latest,${{ github.sha }}' # Etiquetas para la imagen. Puedes añadir más si lo necesitas.
-      # context: '.' # Opcional: la ruta del contexto de construcción si no es la raíz.
-    #secrets:
-      # registry_username: ${{ secrets.DOCKER_USERNAME }}
+      dockerfile_path: './Dockerfile'
+      image_name: 'text-to-youtube'
+      tags: 'latest,${{ github.sha }}'
+      registry: 'ghcr.io' # Explicitly set the target registry
+    secrets:
+      registry_username: ${{ secrets.DOCKER_USERNAME }} # Pass Docker Hub username for base image pulls
+      registry_password: ${{ secrets.DOCKER_PASSWORD }} # Pass Docker Hub password for base image pulls

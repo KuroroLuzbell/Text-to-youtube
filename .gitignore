@@ -6,3 +6,4 @@ venv/
 .idea/
 .vscode/
 .DS_Store
+client_secret_0.json

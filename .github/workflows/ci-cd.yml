@@ -38,7 +38,7 @@ jobs:
     uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main
     with:
       image_name: ${{ github.repository }}
-      dockerfile_path: './src/Dockerfile'
+      dockerfile_path: './Dockerfile'
     secrets:
       registry_username: ${{ github.actor }}
       registry_password: ${{ secrets.GITHUB_TOKEN }}

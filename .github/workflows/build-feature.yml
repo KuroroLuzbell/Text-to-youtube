@@ -16,7 +16,7 @@ jobs:
         id: changed-files
         run: |
           # Compare with 'develop', get a JSON array of absolute file paths
-          FILES=$(git diff --name-only origin/develop...${{ github.sha }} -- '*.py' '*.yml' '*.json' '*.md' | sed "s,^,${GITHUB_WORKSPACE}/current-repo/," | jq -R . | jq -s .)
+          FILES=$(git diff --name-only origin/develop...${{ github.sha }} -- '*.py' '*.yml' '*.json' '*.md' | sed "s,^,${GITHUB_WORKSPACE}/current-repo/," | jq -R . | jq -cs .)
           echo "files=$FILES" >> $GITHUB_OUTPUT
         env:
           GITHUB_WORKSPACE: ${{ github.workspace }}

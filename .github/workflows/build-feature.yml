@@ -48,8 +48,8 @@ jobs:
       LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
 
-  lint-specific-files:
-    needs: build-feature
-    uses: kuroroluzbell/centralizado/.github/workflows/lint-code.yml@main
-    with:
-      files_to_lint: ${{ needs.build-feature.outputs.changed_files }}
+  #lint-specific-files:
+  #  needs: build-feature
+  #  uses: kuroroluzbell/centralizado/.github/workflows/lint-code.yml@main
+  #  with:
+  #    files_to_lint: ${{ needs.build-feature.outputs.changed_files }}

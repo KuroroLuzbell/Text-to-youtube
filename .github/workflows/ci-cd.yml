@@ -37,6 +37,7 @@ jobs:
   build-image:
     permissions:
       packages: write # Grant write permission for GitHub Packages
+      contents: read # Grant read permission for repository contents
     uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main # Asegúrate de usar la rama correcta (ej. main)
     with:
       dockerfile_path: './Dockerfile' # Ruta a tu Dockerfile en este repositorio

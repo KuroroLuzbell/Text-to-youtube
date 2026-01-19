@@ -196,7 +196,7 @@ def generar_audio(
     Si el texto es muy largo, lo divide en secciones y concatena los audios.
 
     Args:
-        client: Cliente de Gemini configurado
+        client: Cliente de Gemini configurados
         guion: Diccionario con el guión generado
         rutas: Diccionario con las rutas del proyecto
         voz: Nombre de la voz a usar

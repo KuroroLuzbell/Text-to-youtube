@@ -41,7 +41,7 @@ jobs:
     uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main # Asegúrate de usar la rama correcta (ej. main)
     with:
       dockerfile_path: './Dockerfile' # Ruta a tu Dockerfile en este repositorio
-      image_name: 'nombre-de-tu-aplicacion' # El nombre que quieras para la imagen
+      image_name: 'text-to-youtube' # El nombre que quieras para la imagen
       tags: 'latest,${{ github.sha }}' # Etiquetas para la imagen. Puedes añadir más si lo necesitas.
       # context: '.' # Opcional: la ruta del contexto de construcción si no es la raíz.
     #secrets:

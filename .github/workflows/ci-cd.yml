@@ -4,10 +4,8 @@
 name: CI/CD FastAPI
 
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build:
@@ -36,6 +34,12 @@ jobs:
       - name: List installed packages
         run: pip list
 
-      - name: Build Docker image
-        run: |
-          docker build -t text-to-youtube:${{ github.sha }} .
+  build-image:
+    uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main # Asegúrate de usar la rama correcta (ej. main)
+    with:
+      dockerfile_path: './Dockerfile' # Ruta a tu Dockerfile en este repositorio
+      image_name: 'nombre-de-tu-aplicacion' # El nombre que quieras para la imagen
+      tags: 'latest,${{ github.sha }}' # Etiquetas para la imagen. Puedes añadir más si lo necesitas.
+      # context: '.' # Opcional: la ruta del contexto de construcción si no es la raíz.
+    #secrets:
+      # registry_username: ${{ secrets.DOCKER_USERNAME }}

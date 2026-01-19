@@ -35,6 +35,9 @@ jobs:
         run: pip list
 
   build-image:
+    permissions:
+      packages: write # Needed to push packages to GHCR
+      contents: read  # Needed to read repository contents
     uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main
     with:
       image_name: ${{ github.repository }}

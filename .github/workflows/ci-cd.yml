@@ -45,3 +45,13 @@ jobs:
     secrets:
       registry_username: ${{ github.actor }}
       registry_password: ${{ secrets.GITHUB_TOKEN }}
+  build-and-push:
+    uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker-gcp.yml@main
+    with:
+      image_name: ${{ github.repository }}
+      artifact_registry_region: "us-central1" # La región de tu repositorio de Artifact Registry
+      artifact_registry_repository: "docker" # El nombre de tu repositorio de Artifact Registry
+    secrets:
+      gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
+      gcp_workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+      gcp_service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}

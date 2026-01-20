@@ -53,7 +53,7 @@ jobs:
     with:
       image_name: ${{ github.repository }}
       artifact_registry_region: "us-central1" # La región de tu repositorio de Artifact Registry
-      artifact_registry_repository: "docker" # El nomdbre de tu repositorio de Artifact Registry
+      artifact_registry_repository: "demo" # El nomdbre de tu repositorio de Artifact Registry
     secrets:
       gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
       gcp_workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}

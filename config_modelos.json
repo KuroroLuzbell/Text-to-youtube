@@ -1,7 +1,7 @@
 {
   "modelos": {
     "texto": {
-      "modelo": "gemini-2.5-pro",
+      "modelo": "gemini-2.5-flash",
       "descripcion": "Modelo para generación de guiones y prompts visuales"
     },
     "tts": {

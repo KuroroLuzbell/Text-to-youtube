@@ -34,18 +34,21 @@ jobs:
       - name: List installed packages
         run: pip list
 
-  build-image:
-    permissions:
-      packages: write # Needed to push packages to GHCR
-      contents: read  # Needed to read repository contents
-    uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main
-    with:
-      image_name: ${{ github.repository }}
-      dockerfile_path: './Dockerfile'
-    secrets:
-      registry_username: ${{ github.actor }}
-      registry_password: ${{ secrets.GITHUB_TOKEN }}
+  #build-image:
+  #  permissions:
+  #    packages: write # Needed to push packages to GHCR
+  #    contents: read  # Needed to read repository contents
+  #  uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker.yml@main
+  #  with:
+  #    image_name: ${{ github.repository }}
+  #    dockerfile_path: './Dockerfile'
+  #   secrets:
+  #    registry_username: ${{ github.actor }}
+  #    registry_password: ${{ secrets.GITHUB_TOKEN }}
   build-and-push:
+    permissions:
+      id-token: write # Required for authenticating with GCP Workload Identity Federation
+      contents: read  # Often required to checkout code for the build
     uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker-gcp.yml@main
     with:
       image_name: ${{ github.repository }}

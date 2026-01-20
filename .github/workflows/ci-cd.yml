@@ -47,7 +47,7 @@ jobs:
   #    registry_password: ${{ secrets.GITHUB_TOKEN }}
   build-and-push:
     permissions:
-      id-token: write # Required for authenticating with GCP Workload Identity Federation
+      id-token: write # Required for authenticcating with GCP Workload Identity Federation
       contents: read  # Often required to checkout code for the build
     uses: kuroroluzbell/centralizado/.github/workflows/build-and-push-docker-gcp.yml@main
     with:

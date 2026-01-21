@@ -49,6 +49,8 @@ jobs:
   #    LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
 
   codacy-analysis:
+    permissions:
+      security-events: write
     needs: build-feature
     uses: kuroroluzbell/centralizado/.github/workflows/codacy-analysis.yml@main
     secrets:

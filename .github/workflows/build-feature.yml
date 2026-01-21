@@ -51,6 +51,7 @@ jobs:
   codacy-analysis:
     permissions:
       security-events: write
+      contents: read
     needs: build-feature
     uses: kuroroluzbell/centralizado/.github/workflows/codacy-analysis.yml@main
     secrets:

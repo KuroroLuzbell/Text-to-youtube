@@ -48,6 +48,12 @@ jobs:
       LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
 
+  codacy-analysis:
+    needs: build-feature
+    uses: kuroroluzbell/centralizado/.github/workflows/codacy-analysis.yml@main
+    secrets:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
   #lint-specific-files:
   #  needs: build-feature
   #  uses: kuroroluzbell/centralizado/.github/workflows/lint-code.yml@main

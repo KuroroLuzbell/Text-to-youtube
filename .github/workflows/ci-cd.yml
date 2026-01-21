@@ -4,6 +4,8 @@
 name: CI/CD FastAPI
 
 on:
+  push:
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 
@@ -46,6 +48,8 @@ jobs:
   #    registry_username: ${{ github.actor }}
   #    registry_password: ${{ secrets.GITHUB_TOKEN }}
   build-and-push:
+    if: github.event_name == 'push'
+    needs: build
     permissions:
       id-token: write # Required for authenticcating with GCP Workload Identity Federation
       contents: read  # Often required to checkout code for the build

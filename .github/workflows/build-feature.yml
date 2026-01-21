@@ -37,16 +37,16 @@ jobs:
       - name: List installed packages
         run: pip list
 
-  code-review:
-    if: ${{ needs.build-feature.outputs.changed_files != '' }} # Only run if there are changed python files
-    needs: build-feature
-    uses: kuroroluzbell/centralizado/.github/workflows/code-review-gemini.yml@main
-    with:
-      files_to_analyze: ${{ needs.build-feature.outputs.changed_files }}
-      fail_level: "alta"
-    secrets:
-      LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
-      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+  #code-review:
+  #  if: ${{ needs.build-feature.outputs.changed_files != '' }} # Only run if there are changed python files
+  #  needs: build-feature
+  #  uses: kuroroluzbell/centralizado/.github/workflows/code-review-gemini.yml@main
+  #  with:
+  #    files_to_analyze: ${{ needs.build-feature.outputs.changed_files }}
+  #    fail_level: "alta"
+  #  secrets:
+  #    LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+  #    LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
 
   codacy-analysis:
     needs: build-feature

@@ -226,7 +226,7 @@ def generar_audio(
 
     # Si el texto es corto, generarlo de una sola vez
     if total_caracteres <= MAX_CARACTERES_TTS:
-        print(f"   ✅ Texto dentro del límite, generando en una sola llamada...")
+        print(f"Texto dentro del límite, generando en una sola llamada...")
         texto_con_estilo = (
             f"{instrucciones_estilo}\n\n{texto_total}"
             if instrucciones_estilo

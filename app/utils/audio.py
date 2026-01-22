@@ -236,7 +236,7 @@ def generar_audio(
 
     # Si es largo, dividir por secciones del guión
     print(f"   ⚠️  Texto excede el límite ({MAX_CARACTERES_TTS} chars)")
-    print("   🔄 Generando audio por secciones...")
+    print(f"   🔄 Generando audio por secciones...")
 
     archivos_temp = []
     total_secciones = len(secciones)

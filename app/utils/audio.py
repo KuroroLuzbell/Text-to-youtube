@@ -1,5 +1,6 @@
 """Generación de audio con Gemini TTS"""
 
+# -*- coding: utf-8 -*-
 import os
 import wave
 from google.genai import types

@@ -7,7 +7,7 @@ from google.genai import types
 from .config import obtener_modelo
 
 
-# Estilos de narración disponibles según géneroe
+# Estilos de narración disponibles según géneroes
 ESTILOS_NARRACION = {
     "1": {
         "nombre": "Terror/Horror",

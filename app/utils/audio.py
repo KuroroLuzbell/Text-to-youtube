@@ -226,7 +226,7 @@ def generar_audio(
 
     # Si el texto es corto, generarlo de una sola vez
     if total_caracteres <= MAX_CARACTERES_TTS:
-        print(f"Texto dentro del límite, generando en una sola llamada...")
+        print("Texto dentro del límite, generando en una sola llamada...")
         texto_con_estilo = (
             f"{instrucciones_estilo}\n\n{texto_total}"
             if instrucciones_estilo
@@ -236,7 +236,7 @@ def generar_audio(
 
     # Si es largo, dividir por secciones del guión
     print(f"   ⚠️  Texto excede el límite ({MAX_CARACTERES_TTS} chars)")
-    print(f"   🔄 Generando audio por secciones...")
+    print("   🔄 Generando audio por secciones...")
 
     archivos_temp = []
     total_secciones = len(secciones)

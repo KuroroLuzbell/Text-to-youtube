@@ -6,8 +6,6 @@ name: CI/CD FastAPI
 on:
   push:
     branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
 
 jobs:
   build:

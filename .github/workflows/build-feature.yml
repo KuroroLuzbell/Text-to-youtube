@@ -47,14 +47,14 @@ jobs:
   #    LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
   #    LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
 
-  codacy-analysis:
-    permissions:
-      security-events: write
-      contents: read
-    needs: build-feature
-    uses: kuroroluzbell/centralizado/.github/workflows/codacy-analysis.yml@main
-    secrets:
-      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+  #codacy-analysis:
+  #  permissions:
+  #    security-events: write
+  #    contents: read
+  #  needs: build-feature
+  #  uses: kuroroluzbell/centralizado/.github/workflows/codacy-analysis.yml@main
+  #  secrets:
+  #    CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
   #lint-specific-files:
   #  needs: build-feature

@@ -235,8 +235,8 @@ def generar_audio(
         return generar_audio_gemini(client, texto_con_estilo, filepath, voz)
 
     # Si es largo, dividir por secciones del guión
-    print("⚠️ Texto excede el límite ({MAX_CARACTERES_TTS} chars)")
-    print("🔄 Generando audio por secciones...")
+    print(f"⚠️ Texto excede el límite ({MAX_CARACTERES_TTS} chars)")
+    print(f"🔄 Generando audio por secciones...")
 
     archivos_temp = []
     total_secciones = len(secciones)
